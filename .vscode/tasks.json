@@ -1,0 +1,49 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "new contest",
+			"command": "cd ~/atcoder-rust && cargo compete new ${input:contest-id}",
+			"problemMatcher": [],
+		},
+		{
+			"type": "shell",
+			"label": "build&test",
+			"command": "cd ${fileDirname} && cargo compete test --src ${fileBasename}",
+			"group": {
+			    "kind": "build",
+			    "isDefault": true
+			},
+			"problemMatcher": ["$rustc"],
+		},
+		{
+			"type": "shell",
+			"label": "build&submit",
+			"command": "cd ${fileDirname} && cargo compete submit ${fileBasenameNoExtension}",
+			"group": {
+			    "kind": "build",
+			    "isDefault": true
+			},
+			"problemMatcher": ["$rustc"],
+		},
+		{
+			"type": "shell",
+			"label": "build&run",
+			"command": "cd ${fileDirname} && cargo build --bin ${input:contest-id}-${fileBasenameNoExtension} && cargo run --bin ${input:contest-id}-${fileBasenameNoExtension}",
+			"group": {
+			    "kind": "build",
+			    "isDefault": true
+			},
+			"problemMatcher": ["$rustc"],
+		},
+	],
+	"inputs": [
+		{
+			"type": "promptString",
+			"id": "contest-id",
+			"description": "",
+			"default": "abc"
+		},
+	]
+}

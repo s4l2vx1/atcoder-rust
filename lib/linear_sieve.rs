@@ -7,6 +7,11 @@ mod linear_sieve {
         fn new(lpf: usize, exp: usize, pow: usize, rem: usize) -> Self {
             LpfT(lpf as u32, exp as u32, pow as u32, rem as u32)
         }
+
+        fn lpf(&self) -> usize { self.0 as usize }
+        fn exp(&self) -> usize { self.1 as usize }
+        fn pow(&self) -> usize { self.2 as usize }
+        fn rem(&self) -> usize { self.3 as usize }
     }
 
     pub struct LinearSieve {
@@ -39,10 +44,10 @@ mod linear_sieve {
 
         pub fn is_prime(&self, n: usize) -> bool { n >= 2 && self.lpf_t[n].0 == n as u32 }
 
-        pub fn lpf(&self, n: usize) -> usize { self.lpf_t[n].0 as usize }
-        pub fn lpf_exp(&self, n: usize) -> usize { self.lpf_t[n].1 as usize }
-        pub fn lpf_pow(&self, n: usize) -> usize { self.lpf_t[n].2 as usize }
-        pub fn lpf_rem(&self, n: usize) -> usize { self.lpf_t[n].3 as usize }
+        pub fn lpf(&self, n: usize) -> usize { self.lpf_t[n].lpf() }
+        pub fn lpf_exp(&self, n: usize) -> usize { self.lpf_t[n].exp() }
+        pub fn lpf_pow(&self, n: usize) -> usize { self.lpf_t[n].pow() }
+        pub fn lpf_rem(&self, n: usize) -> usize { self.lpf_t[n].rem() }
 
         fn factorize_with_lpft(&self, n: usize) -> impl Iterator<Item = LpfT> + '_ {
             std::iter::successors(

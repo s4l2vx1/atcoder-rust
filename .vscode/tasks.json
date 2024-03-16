@@ -5,7 +5,7 @@
 			"type": "shell",
 			"label": "new contest",
 			"command": "cd ~/atcoder-rust && cargo compete new ${input:contest-id}",
-			"problemMatcher": [],
+			"problemMatcher": []
 		},
 		{
 			"type": "shell",
@@ -15,7 +15,7 @@
 			    "kind": "build",
 			    "isDefault": true
 			},
-			"problemMatcher": ["$rustc"],
+			"problemMatcher": ["$rustc"]
 		},
 		{
 			"type": "shell",
@@ -25,17 +25,27 @@
 			    "kind": "build",
 			    "isDefault": true
 			},
-			"problemMatcher": ["$rustc"],
+			"problemMatcher": ["$rustc"]
 		},
 		{
 			"type": "shell",
 			"label": "build&run",
-			"command": "cd ${fileDirname} && cargo build --bin ${input:contest-id}-${fileBasenameNoExtension} && cargo run --bin ${input:contest-id}-${fileBasenameNoExtension}",
+			"command": "cd ${fileDirname} && cargo build --bin ${input:-contest-id}-${fileBasenameNoExtension} && cargo run --bin ${input:-contest-id}-${fileBasenameNoExtension}",
 			"group": {
 			    "kind": "build",
 			    "isDefault": true
 			},
-			"problemMatcher": ["$rustc"],
+			"problemMatcher": ["$rustc"]
+		},
+		{
+			"type": "shell",
+			"label": "submit bin no-test",
+			"command": "cd ${fileDirname} && cargo compete submit --no-test --src ${fileBasenameNoExtension}",
+			"group": {
+			    "kind": "build",
+			    "isDefault": true
+			},
+			"problemMatcher": ["$rustc"]
 		},
 	],
 	"inputs": [
@@ -44,6 +54,11 @@
 			"id": "contest-id",
 			"description": "",
 			"default": "abc"
+		},
+		{
+			"id": "-contest-id",
+      		"type": "command",
+      		"command": "extension.commandvariable.file.fileDirBasename2Up",
 		},
 	]
 }

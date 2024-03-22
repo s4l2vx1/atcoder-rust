@@ -32,7 +32,7 @@ use maplit::*;
 use amplify::default;
 use omniswap::{take, swap, rotate};
 
-use std::{cmp::*, iter::*, num::*};
+use std::{cmp::*, ops::*, iter::*, num::*, collections::*};
 
 use num::{*, integer::*, rational::Ratio};
 use regex::bytes::Regex;

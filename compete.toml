@@ -25,20 +25,48 @@ src = '''
 #![allow(dead_code)]
 #![allow(unused_imports)]
 
-use proconio::{*, marker::*};
+use num_derive::*;
 use memoise::*;
+use proconio::{*, marker::*};
+use maplit::*;
+use amplify::default;
+use omniswap::{take, swap, rotate};
 
-use std::iter::*;
-use itertools::*;
-use tap::{Conv, Tap};
-use counter::Counter;
-use smallvec;
+use std::{cmp::*, iter::*, num::*};
 
-use num::integer::*;
-
+use num::{*, integer::*, rational::Ratio};
+use regex::bytes::Regex;
+use ordered_float::{NotNan, OrderedFloat};
+use superslice::Ext as _;
+use itertools::Itertools;
+use itertools_num::*;
+use either::*;
+use rustc_hash::*;
+use smallvec::{SmallVec, smallvec, smallvec_inline};
 use ac_library::*;
+use once_cell::sync::*;
+use bitvec::prelude::*;
+use counter::Counter;
+use easy_ext::ext;
+use btreemultimap::BTreeMultiMap;
+use bstr::BString;
+use az::{CheckedAs as _, OverflowingAs as _, SaturatingAs as _, WrappingAs as _};
 use glidesort::*;
-use pathfinding::prelude::*;
+use tap::Conv;
+
+//use ndarray::*;
+//use nalgebra::*;
+
+//use rand::{*, rngs::SmallRng};
+//use {rand::distributions, rand_distr::*};
+
+//use petgraph::{*, algo::*, visit::*};
+//use pathfinding::prelude::*;
+
+//use varisat::*;
+
+//use indexmap::*;
+
 
 #[fastout]
 fn main() {

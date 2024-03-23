@@ -13,7 +13,7 @@
 			"command": "cd ${fileDirname} && cargo compete test --src ${fileBasename}",
 			"group": {
 			    "kind": "build",
-			    "isDefault": true
+			    "isDefault": false
 			},
 			"problemMatcher": ["$rustc"]
 		},
@@ -33,7 +33,7 @@
 			"command": "cd ${fileDirname} && cargo build --bin ${input:-contest-id}-${fileBasenameNoExtension} && cargo run --bin ${input:-contest-id}-${fileBasenameNoExtension}",
 			"group": {
 			    "kind": "build",
-			    "isDefault": true
+			    "isDefault": false
 			},
 			"problemMatcher": ["$rustc"]
 		},
@@ -43,7 +43,7 @@
 			"command": "cd ${fileDirname} && cargo build --bin ${input:-contest-id}-${fileBasenameNoExtension} && cargo compete submit --no-test --src ${fileBasenameNoExtension}.rs",
 			"group": {
 			    "kind": "build",
-			    "isDefault": true
+			    "isDefault": false
 			},
 			"problemMatcher": ["$rustc"]
 		},

@@ -39,8 +39,8 @@
 		},
 		{
 			"type": "shell",
-			"label": "submit bin no-test",
-			"command": "cd ${fileDirname} && cargo compete submit --no-test --src ${fileBasenameNoExtension}",
+			"label": "submit no-test",
+			"command": "cd ${fileDirname} && cargo build --bin ${input:-contest-id}-${fileBasenameNoExtension} && cargo compete submit --no-test --src ${fileBasenameNoExtension}.rs",
 			"group": {
 			    "kind": "build",
 			    "isDefault": true

@@ -50,7 +50,7 @@ use bitvec::prelude::*;
 use counter::Counter;
 use easy_ext::ext;
 use btreemultimap::BTreeMultiMap;
-use bstr::BString;
+use bstr::{BString, ByteSlice};
 use az::{CheckedAs as _, OverflowingAs as _, SaturatingAs as _, WrappingAs as _};
 use glidesort::*;
 use tap::Conv;
